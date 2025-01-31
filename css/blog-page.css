@@ -1,0 +1,29 @@
+/* ================= BLOG STYLES ================= */
+
+.article {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.article-title {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 200;
+  margin: 0;
+}
+
+.article-content {
+  display: none;
+  padding: 10px 0;
+  opacity: 0;
+  transform: scaleY(0);
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  text-align: justify;
+}
+
+.article-content.open {
+  display: block;
+  opacity: 1;
+  transform: scaleY(1);
+}
