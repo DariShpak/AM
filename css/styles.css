@@ -142,7 +142,7 @@ img {
   display: none;
 }
 
-.logo-header-wrap {
+.header-logo-wrap {
   display: flex;
   justify-content: center;
 
@@ -177,4 +177,65 @@ img {
   to {
     transform: scale(1.6);
   }
+}
+
+/* ================= MOB MENU STYLES ================= */
+
+.mob-menu-btn {
+  position: absolute;
+  top: 25;
+  right: 26;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.hidden {
+  display: none;
+}
+
+.mob-menu {
+  position: absolute;
+  right: 20px;
+  left: 20px;
+  background-color: var(--bg-color);
+  color: var(--dark-color);
+  width: 90%;
+  height: 100%;
+  padding: 20px;
+  display: none;
+  z-index: 999;
+}
+
+.mob-menu-list {
+  max-width: 190px;
+  list-style: none;
+
+  padding: 0;
+
+  display: flex;
+
+  flex-direction: column;
+  gap: 32px;
+  justify-content: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mob-menu-list-item .socials {
+  display: flex;
+  font-size: 18px;
+  gap: 24px;
+  justify-content: center;
+}
+
+.mob-menu-link {
+  color: var(--dark-color);
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
 }
