@@ -1,0 +1,45 @@
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Altum Mare</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/post-generator.css" />
+  </head>
+  <body>
+    <section class="section form-section">
+      <div class="container form-container">
+        <form action="" class="form-generator">
+          <fieldset class="form-group">
+            <legend class="group-title">Обрати розділ</legend>
+            <select id="page" name="page">
+              <option value="dreams-blog">Сновидіння</option>
+              <option value="art-blog">Образи в мистецтві</option>
+              <option value="body-blog" selected>Тіло як провідник</option>
+              <option value="astro-blog">Астро-Навігація</option>
+              <option value="reading-blog">Читальня</option>
+            </select>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <legend class="group-title">Додати контент:</legend>
+            <label class="form-label">
+              Тема посту
+              <input type="text" name="theme" class="form-input" />
+            </label>
+            <label class="form-label">
+              Текст посту
+              <textarea name="content" rows="5" class="form-input"></textarea>
+            </label>
+            <label class="form-label">
+              Посилання з посту (опціонально)
+              <input type="text" name="link" class="form-input" />
+            </label>
+          </fieldset>
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
