@@ -1,5 +1,9 @@
 /* ================= BLOG STYLES ================= */
 
+.blog-page-container .section-img-wrap {
+  margin-bottom: 24px;
+}
+
 .article {
   border-bottom: 1px solid #ddd;
   padding: 10px;
@@ -7,10 +11,11 @@
 }
 
 .article-title {
-  font-size: 20px;
+  font-size: 16px;
   text-transform: uppercase;
   font-weight: 200;
   margin: 0;
+  align-items: center;
 }
 
 .article-content {
@@ -26,4 +31,24 @@
   display: block;
   opacity: 1;
   transform: scaleY(1);
+}
+
+@media screen and (min-width: 1024px) {
+  .blog-page-container {
+    display: flex;
+    gap: 48px;
+    justify-content: space-between;
+  }
+
+  .blog-page-container .section-img-wrap {
+    flex: 1;
+    position: sticky;
+    top: 50px;
+    height: fit-content;
+    margin-bottom: 0;
+  }
+
+  .articles-wrap {
+    max-width: 368px;
+  }
 }
