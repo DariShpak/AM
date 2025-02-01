@@ -152,7 +152,7 @@ img {
 
 /* ================= FOOTER STYLES ================= */
 .footer {
-  padding-top: 48px;
+  padding-top: 24px;
   padding-bottom: 24px;
 }
 
@@ -274,7 +274,7 @@ img {
     display: none;
   }
 
-  .header{
+  .header {
     height: 80px;
   }
 
@@ -289,12 +289,12 @@ img {
     gap: 48px;
   }
 
-  .socials{
+  .socials {
     display: flex;
     gap: 24px;
   }
 
-  .home-page-scroll-btn{
+  .home-page-scroll-btn {
     display: none;
   }
 
@@ -341,5 +341,13 @@ img {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1312px;
+    padding-left: 64px;
+    padding-right: 64px;
   }
 }
