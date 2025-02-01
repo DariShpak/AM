@@ -64,6 +64,18 @@ img {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.btn-link {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 16px;
+  text-transform: uppercase;
+
+  padding-bottom: 12px;
+  padding-top: 12px;
+  max-width: 200px;
+}
+
 /* ================= LAYOUT STYLES ================= */
 .section {
   padding-top: 72px;
@@ -292,39 +304,6 @@ img {
   .socials {
     display: flex;
     gap: 24px;
-  }
-
-  .home-page-scroll-btn {
-    display: none;
-  }
-
-  .horizontal-scroll {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    scroll-behavior: smooth;
-    display: flex;
-    flex-wrap: nowrap;
-  }
-
-  .horizontal-scroll .slider-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    background: lightgray;
-    border-bottom: 2px solid black;
-
-    min-width: 100vw;
-    height: 100vh;
-  }
-
-  .slider-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-
-    gap: 72px;
   }
 
   .section-img-wrap > img {
