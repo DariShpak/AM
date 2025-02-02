@@ -252,6 +252,20 @@ img {
   display: block;
 }
 
+.error-container {
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.error-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: center;
+  justify-content: center;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 672px;
