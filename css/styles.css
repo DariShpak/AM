@@ -271,6 +271,10 @@ img {
 }
 
 @media screen and (min-width: 768px) {
+  .scroll-to-top-btn {
+    bottom: 40px;
+    right: 60px;
+  }
   .container {
     max-width: 672px;
     padding-left: 48px;
@@ -300,6 +304,11 @@ img {
 }
 
 @media screen and (min-width: 1024px) {
+  .scroll-to-top-btn {
+    bottom: 40px;
+    right: 80px;
+  }
+
   .container {
     max-width: 928px;
   }
@@ -390,5 +399,10 @@ img {
     max-width: 1312px;
     padding-left: 64px;
     padding-right: 64px;
+  }
+
+  .section-img-wrap > img {
+    width: 576px;
+    object-fit: cover;
   }
 }
