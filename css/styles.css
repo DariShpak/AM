@@ -400,9 +400,4 @@ img {
     padding-left: 64px;
     padding-right: 64px;
   }
-
-  .section-img-wrap > img {
-    width: 576px;
-    object-fit: cover;
-  }
 }

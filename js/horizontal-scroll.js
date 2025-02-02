@@ -1,75 +1,58 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const container = document.querySelector(".scroll-container")
-  const sections = document.querySelectorAll(".section")
+// let main = document.querySelector(".main")
+// let horizontal = document.querySelector(".horizontal")
 
-  let currentIndex = 0
-  let touchStartX = 0
-  let touchEndX = 0
+// function updateScrollBehavior() {
+//   if (window.innerWidth >= 1024) {
+//     horizontal.style.height = `${main.scrollWidth}px`
+//     document.body.style.overflowY = "scroll"
+//     window.addEventListener("scroll", scrollFunction)
+//   } else {
+//     main.style.transform = ""
+//     document.body.style.overflowY = "auto"
+//     window.removeEventListener("scroll", scrollFunction)
+//   }
+// }
 
-  function scrollToSection(index) {
-    if (index < 0 || index >= sections.length) return
+// function scrollFunction() {
+//   let scrollY = window.scrollY
+//   main.style.transform = `translateX(-${scrollY}px)`
+// }
 
-    const targetScroll = sections[index].offsetLeft - container.offsetLeft
-    container.scrollTo({left: targetScroll, behavior: "smooth"})
+// updateScrollBehavior()
+// window.addEventListener("resize", updateScrollBehavior)
+
+let main = document.querySelector(".main")
+let horizontal = document.querySelector(".horizontal")
+
+function updateScrollBehavior() {
+  if (window.innerWidth >= 1024) {
+    let totalWidth = main.scrollWidth // Визначаємо правильну ширину
+    horizontal.style.height = `${totalWidth - window.innerWidth}px` // Фіксуємо прокрутку без лишнього простору
+    document.body.style.overflowY = "scroll"
+    window.addEventListener("scroll", scrollFunction)
+  } else {
+    main.style.transform = ""
+    document.body.style.overflowY = "auto"
+    window.removeEventListener("scroll", scrollFunction)
   }
+}
 
-  // 🔹 Прокрутка мишею або тачпадом (Throttle 200ms)
-  document.addEventListener(
-    "wheel",
-    _.throttle(function (event) {
-      if (window.innerWidth >= 1024) {
-        event.preventDefault()
-        if (event.deltaY > 10 && currentIndex < sections.length - 1) {
-          currentIndex++
-        } else if (event.deltaY < -10 && currentIndex > 0) {
-          currentIndex--
-        }
-        scrollToSection(currentIndex)
-      }
-    }, 200),
-    {passive: false}
-  )
+function scrollFunction() {
+  let scrollY = window.scrollY
+  main.style.transform = `translateX(-${scrollY}px)`
+}
 
-  // 🔹 Прокрутка клавішами клавіатури (Debounce 100ms)
-  document.addEventListener(
-    "keydown",
-    _.debounce(function (event) {
-      if (window.innerWidth >= 1024) {
-        if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-          if (currentIndex < sections.length - 1) {
-            currentIndex++
-            scrollToSection(currentIndex)
-          }
-        } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-          if (currentIndex > 0) {
-            currentIndex--
-            scrollToSection(currentIndex)
-          }
-        }
-      }
-    }, 100)
-  )
+// Виконуємо при завантаженні та зміні розміру екрану
+updateScrollBehavior()
+window.addEventListener("resize", updateScrollBehavior)
 
-  // 🔹 Свайпи на сенсорних пристроях (Throttle 200ms)
-  container.addEventListener("touchstart", (e) => {
-    touchStartX = e.changedTouches[0].screenX
-  })
-
-  container.addEventListener(
-    "touchend",
-    _.throttle(function (e) {
-      touchEndX = e.changedTouches[0].screenX
-      if (window.innerWidth >= 1024) {
-        if (
-          touchStartX > touchEndX + 50 &&
-          currentIndex < sections.length - 1
-        ) {
-          currentIndex++
-        } else if (touchStartX < touchEndX - 50 && currentIndex > 0) {
-          currentIndex--
-        }
-        scrollToSection(currentIndex)
-      }
-    }, 200)
-  )
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.innerWidth >= 1024) {
+    let scrollTopButton = document.querySelector(".home-page-scroll-btn")
+    if (scrollTopButton) {
+      scrollTopButton.style.visibility = "hidden"
+      scrollTopButton.style.opacity = "0"
+      scrollTopButton.style.pointerEvents = "none"
+    }
+  }
 })

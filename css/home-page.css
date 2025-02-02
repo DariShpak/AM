@@ -1,49 +1,87 @@
-html,
 body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* Вимикаємо горизонтальний скрол для body */
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100vh;
   scroll-behavior: smooth;
 }
 
-.slider-container {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+.header,
+.footer {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  z-index: 50;
 }
 
-@media screen and (min-width: 1024px) {
-  .decor-line {
-    display: none;
+.main {
+  display: block;
+  width: 100vw;
+}
+
+.section {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+
+  text-transform: uppercase;
+}
+
+.horizontal {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  body {
+    overflow: hidden;
   }
 
-  .home-page-scroll-btn {
-    display: none;
+  /* body.home .scroll-to-top {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  } */
+
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
   }
-  .main-wrapper {
-    overflow: hidden; /* Прибираємо стандартний скрол */
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
   }
-  .scroll-container {
+
+  .main {
     display: flex;
-    height: 75vh;
-    width: 100vw;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    gap: 4vw; /* Додає видимість наступної секції */
-    /* padding: 0 5vw;  */
+    flex-direction: row;
+    width: calc(540vw + 5vw);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
   }
 
-  .slider-section {
-    flex: 0 0 70vw; /* Секція тепер займає 85% ширини екрану */
-    height: 75vh;
-    scroll-snap-align: start;
-    display: flex;
+  .section {
+    width: 80vw;
+    height: 100vh;
+  }
 
+  .slider-container {
+    display: flex;
+    gap: 48px;
     align-items: center;
-    padding-top: 0;
-    padding-bottom: 0;
   }
 
   .section img {
@@ -51,22 +89,9 @@ body {
     object-fit: contain;
   }
 
-  .slider-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 72px;
-    justify-content: space-between;
+  .horizontal {
+    display: block;
+    width: 100vw;
+    height: calc(70vh + 1px);
   }
-}
-
-
-@media screen and (min-width: 1440px) {
- 
- .section img {
-  max-width: 100%;
-    max-height: 70vh;
-    object-fit: contain;
-  }
-  
 }
