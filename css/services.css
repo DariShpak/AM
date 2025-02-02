@@ -1,0 +1,28 @@
+.services-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.sevices-list-item {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+@media screen and (min-width: 1024px) {
+  .sevices-list-item {
+    display: flex;
+    flex-direction: row;
+    gap: 72px;
+
+    justify-content: space-between;
+    align-items:center;
+  }
+}
