@@ -1,75 +1,75 @@
-// const scrollContainer = document.querySelector(".horizontal-scroll")
+document.addEventListener("DOMContentLoaded", function () {
+  const container = document.querySelector(".scroll-container")
+  const sections = document.querySelectorAll(".section")
 
-// function handleScroll(event) {
-//   if (window.innerWidth >= 1024) {
-//     event.preventDefault()
-//     scrollContainer.scrollLeft += event.deltaY
-//   }
-// }
+  let currentIndex = 0
+  let touchStartX = 0
+  let touchEndX = 0
 
-// function updateScrollBehavior() {
-//   if (window.innerWidth >= 1024) {
-//     window.addEventListener("wheel", handleScroll, {passive: false})
-//   } else {
-//     window.removeEventListener("wheel", handleScroll)
-//   }
-// }
+  function scrollToSection(index) {
+    if (index < 0 || index >= sections.length) return
 
-// window.addEventListener("resize", updateScrollBehavior)
-// updateScrollBehavior()
-
-// const scrollContainer = document.querySelector(".horizontal-scroll")
-// const scrollSpeed = 2.5 // Множник швидкості скролу
-
-// function handleScroll(event) {
-//   if (window.innerWidth >= 1024) {
-//     event.preventDefault()
-//     scrollContainer.scrollLeft += event.deltaY * scrollSpeed // Прискорення прокрутки
-//   }
-// }
-
-// function updateScrollBehavior() {
-//   if (window.innerWidth >= 1024) {
-//     window.addEventListener("wheel", handleScroll, {passive: false})
-//   } else {
-//     window.removeEventListener("wheel", handleScroll)
-//   }
-// }
-
-// // Запускаємо при завантаженні та при зміні розміру екрану
-// window.addEventListener("resize", updateScrollBehavior)
-// updateScrollBehavior()
-
-const scrollContainer = document.querySelector(".horizontal-scroll")
-const scrollSpeed = 3 // Швидкість прокрутки
-
-function handleScroll(event) {
-  if (window.innerWidth >= 1024) {
-    event.preventDefault()
-
-    let scrollAmount = event.deltaY || event.deltaX || 0
-
-    // Chrome може мати іншу шкалу дельти
-    if (event.deltaMode === 1) {
-      // DOM_DELTA_LINE
-      scrollAmount *= 40
-    } else if (event.deltaMode === 2) {
-      // DOM_DELTA_PAGE
-      scrollAmount *= window.innerHeight
-    }
-
-    scrollContainer.scrollLeft += scrollAmount * scrollSpeed
+    const targetScroll = sections[index].offsetLeft - container.offsetLeft
+    container.scrollTo({left: targetScroll, behavior: "smooth"})
   }
-}
 
-function updateScrollBehavior() {
-  if (window.innerWidth >= 1024) {
-    window.addEventListener("wheel", handleScroll, {passive: false})
-  } else {
-    window.removeEventListener("wheel", handleScroll)
-  }
-}
+  // 🔹 Прокрутка мишею або тачпадом (Throttle 200ms)
+  document.addEventListener(
+    "wheel",
+    _.throttle(function (event) {
+      if (window.innerWidth >= 1024) {
+        event.preventDefault()
+        if (event.deltaY > 10 && currentIndex < sections.length - 1) {
+          currentIndex++
+        } else if (event.deltaY < -10 && currentIndex > 0) {
+          currentIndex--
+        }
+        scrollToSection(currentIndex)
+      }
+    }, 200),
+    {passive: false}
+  )
 
-// Запускаємо при завантаженні та при зміні розміру екрану
-window.addEventListener("resize", updateScrollBehavior)
-updateScrollBehavior()
+  // 🔹 Прокрутка клавішами клавіатури (Debounce 100ms)
+  document.addEventListener(
+    "keydown",
+    _.debounce(function (event) {
+      if (window.innerWidth >= 1024) {
+        if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+          if (currentIndex < sections.length - 1) {
+            currentIndex++
+            scrollToSection(currentIndex)
+          }
+        } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+          if (currentIndex > 0) {
+            currentIndex--
+            scrollToSection(currentIndex)
+          }
+        }
+      }
+    }, 100)
+  )
+
+  // 🔹 Свайпи на сенсорних пристроях (Throttle 200ms)
+  container.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX
+  })
+
+  container.addEventListener(
+    "touchend",
+    _.throttle(function (e) {
+      touchEndX = e.changedTouches[0].screenX
+      if (window.innerWidth >= 1024) {
+        if (
+          touchStartX > touchEndX + 50 &&
+          currentIndex < sections.length - 1
+        ) {
+          currentIndex++
+        } else if (touchStartX < touchEndX - 50 && currentIndex > 0) {
+          currentIndex--
+        }
+        scrollToSection(currentIndex)
+      }
+    }, 200)
+  )
+})

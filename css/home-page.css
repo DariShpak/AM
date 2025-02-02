@@ -1,3 +1,12 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Вимикаємо горизонтальний скрол для body */
+  scroll-behavior: smooth;
+}
+
 .slider-container {
   display: flex;
   flex-direction: column;
@@ -5,35 +14,59 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .home-page-scroll-btn {
+  .decor-line {
     display: none;
   }
 
-  .horizontal-scroll {
-    width: 100vw;
-    height: 80vh;
-    overflow: hidden;
-    scroll-behavior: smooth;
+  .home-page-scroll-btn {
+    display: none;
+  }
+  .main-wrapper {
+    overflow: hidden; /* Прибираємо стандартний скрол */
+  }
+  .scroll-container {
     display: flex;
-    flex-wrap: nowrap;
+    height: 75vh;
+    width: 100vw;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 4vw; /* Додає видимість наступної секції */
+    /* padding: 0 5vw;  */
   }
 
-  .horizontal-scroll .slider-section {
+  .slider-section {
+    flex: 0 0 70vw; /* Секція тепер займає 85% ширини екрану */
+    height: 75vh;
+    scroll-snap-align: start;
     display: flex;
 
     align-items: center;
-    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 
-    min-width: 100%;
-    height: 70vh;
+  .section img {
+    max-height: 70vh;
+    object-fit: contain;
   }
 
   .slider-container {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
-
     gap: 72px;
+    justify-content: space-between;
   }
+}
+
+
+@media screen and (min-width: 1440px) {
+ 
+ .section img {
+  max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+  }
+  
 }
