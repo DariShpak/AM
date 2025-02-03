@@ -7,30 +7,17 @@
 .article {
   border-bottom: 1px solid #ddd;
   padding: 10px;
-  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .article-title {
   font-size: 16px;
   text-transform: uppercase;
   font-weight: 200;
-  margin: 0;
   align-items: center;
-}
-
-.article-content {
-  display: none;
-  padding: 10px 0;
-  opacity: 0;
-  transform: scaleY(0);
-  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-  text-align: justify;
-}
-
-.article-content.open {
-  display: block;
-  opacity: 1;
-  transform: scaleY(1);
 }
 
 @media screen and (min-width: 1024px) {
@@ -38,6 +25,12 @@
     display: flex;
     gap: 48px;
     justify-content: space-between;
+  }
+
+  .article {
+    max-width: 800px; /* Обмежуємо ширину для зручності читання */
+    margin: 0 auto; /* Центруємо */
+    padding: 20px;
   }
 
   .blog-page-container .section-img-wrap {
@@ -48,7 +41,7 @@
     margin-bottom: 0;
   }
 
-  .articles-wrap {
-    max-width: 368px;
-  }
+  /* .articles-wrap {
+    max-width: 468px;
+  } */
 }
