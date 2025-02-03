@@ -10,22 +10,47 @@
     <main>
       <section class="section form-section">
         <div class="container form-container">
-          <h2>Додати новий пост</h2>
-          <form id="postForm">
-            <label for="category">Категорія ID:</label>
+
+          <h2 class="section-subtitle">Додати новий пост</h2>
+
+          <form id="postForm" class="form-generator">
+
+            <label for="category" class="title">Обрати розділ:</label>
+            
+            <select id="category" name="category">
+              <option value="dreams-blog">Сновидіння</option>
+              <option value="art-blog">Образи в мистецтві</option>
+              <option value="body-blog" selected>Тіло як провідник</option>
+              <option value="astro-blog">Астро-Навігація</option>
+              <option value="reading-blog">Читальня</option>
+            </select>
+
+            <label for="title" class="title">Назва:</label>
             <input
-              type="number"
-              id="category"
-              name="category"
+              type="text"
+              id="title"
+              name="title"
               required
-            /><br /><br />
+              class="form-input"
+            />
+            
 
-            <label for="title">Заголовок:</label>
-            <input type="text" id="title" name="title" required /><br /><br />
+            <label for="description" class="title">Текст посту:</label>
+            <textarea
+              id="description"
+              name="description"
+              required
+              class="form-input"
+            ></textarea
+            >
 
-            <label for="description">Опис:</label>
-            <textarea id="description" name="description" required></textarea
-            ><br /><br />
+            <label for="links" class="title">Посилання (через кому):</label>
+            <input
+              type="text"
+              id="links"
+              name="links"
+              placeholder="https://example.com, https://youtube.com/video"
+              class="form-input"/>
 
             <button type="submit">Відправити</button>
           </form>
